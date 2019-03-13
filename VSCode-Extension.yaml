@@ -1,0 +1,74 @@
+name: 1.0$(rev:.r) # build numbering format
+
+resources:
+- repo: self
+queue:
+  name: Hosted VS2017
+  demands: npm
+
+steps:
+- task: Npm@1
+  displayName: 'NPM Install'
+  inputs:
+    verbose: false
+
+
+- task: Npm@1
+  displayName: 'NPM Lint'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ci-lint'
+
+
+- task: Npm@1
+  displayName: 'NPM Git Clean'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ci-git-clean'
+
+
+- task: Npm@1
+  displayName: 'NPM Execute Tests'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ci-execute-tests'
+
+
+- task: Npm@1
+  displayName: 'NPM Git Config'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ci-git-config'
+
+
+- task: Npm@1
+  displayName: 'NPM Update version'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'version $(Build.BuildNumber)'
+
+
+- task: Npm@1
+  displayName: 'NPM Publish'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ci-vsce-publish -- -p $(VscePublishToken)'
+
