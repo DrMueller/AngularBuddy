@@ -6,6 +6,8 @@
 /out-tsc
 /out
 
+**/testresults/
+
 # dependencies
 /node_modules
 
