@@ -33,7 +33,7 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "lint": "tslint --project tslint.json",
     "ci-test": "npm run compile && node ./node_modules/vscode/bin/test",
-		"ci-lint": "tslint --project tslint.json --format junit --out testresults/lint-tests.xml",
+    "ci-lint": "tslint --project tslint.json --format junit --out testresults/lint-tests.xml",
     "ci-git-clean": "git reset --hard",
     "ci-git-config": "git config --global user.email \"matthiasm@live.de\" && git config --global user.name \"Matthias Mueller\"",
     "ci-vsce-publish": "vsce publish",
@@ -45,5 +45,9 @@
     "tslint": "5.14.0",
     "@types/node": "^8.10.25",
     "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "inversify": "^5.0.1",
+    "vsce": "^1.58.0"
   }
 }
