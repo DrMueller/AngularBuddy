@@ -21,10 +21,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
+        "command": "extension.alignTestServiceMocks",
+        "title": "Align Service Mocks"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.alignTestServiceMocks"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -47,7 +54,9 @@
     "@types/mocha": "^2.2.42"
   },
   "dependencies": {
+    "@drmueller/language-extensions": "^2.1.11",
     "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
     "vsce": "^1.58.0"
   }
 }
