@@ -1,14 +1,9 @@
 import * as vscode from 'vscode';
 
+import { InitializationService } from './infrastructure/initialization';
+
 export function activate(context: vscode.ExtensionContext) {
-
-  console.log('Congratulations, your extension "angularbuddy" is now active!');
-
-  const disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-    vscode.window.showInformationMessage('Hello World!');
-  });
-
-  context.subscriptions.push(disposable);
+  InitializationService.initializeExtension(context);
 }
 
 export function deactivate() { }

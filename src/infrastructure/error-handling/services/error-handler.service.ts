@@ -6,7 +6,8 @@ export class ErrorHandlerService {
     try {
       await callback();
     } catch (err) {
-      vscode.window.showErrorMessage(err.message);
+      debugger;
+      await vscode.window.showErrorMessage(err.message);
     }
   }
 }
